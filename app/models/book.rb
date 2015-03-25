@@ -10,7 +10,9 @@ class Book < ActiveRecord::Base
       ["AVENTURA", "ROMANCE","INFANTIL","EDUCATIVO","MOTIVACIONAL"]
     end
 
-
+  def decorate
+    "Lps #{price}"
+  end
 
 
 

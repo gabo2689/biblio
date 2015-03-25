@@ -3,6 +3,18 @@ class BooksController < ApplicationController
   def index
     @books = Book.order(title: :asc)
 
+    if params[:keyword].present?
+    q = params[:keyword]
+    @books = @books.joins(:author)
+      .where("authors.name LIKE '%#{q}%' OR books.description LIKE '%#{q}%' OR books.title LIKE '%#{q}%' OR books.price LIKE '%#{q}%' OR books.category LIKE '%#{q}%'")
+  end
+
+  if request.xhr?
+    render partial: "table", locals: {books: @books}
+  end
+
+
+
   end
 
   def new

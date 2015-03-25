@@ -2,16 +2,20 @@
 - if flash[:notice].present?
   .notice= flash[:notice]
 
+
+
+.form
+  = form_tag books_path, class: "js_filter_form", remote: true, method: :get do
+    .form_row
+      = text_field_tag :keyword, nil, placeholder: "Ingrese una palabra a buscar", class: "form_input"
+    .form_row
+      = submit_tag "Filtrar", class: "form_submit"
+
 - if @books.any?
-  %table{border: "1"}
-    %tr
-      - if current_user.nil?
-        %th Author
-      %th Nombre
-      %th Descripcion
-      %th Precio
-      %th Categoria
-    = render @books
+  .js_filtered_table
+    = render partial: "table", locals: {book: @books}
+
+
 - else
   %em No hay ningun libro agregado
 

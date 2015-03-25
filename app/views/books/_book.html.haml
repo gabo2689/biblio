@@ -3,5 +3,6 @@
     %td= book.author.name
   %td= link_to book.title, book
   %td= book.description
-  %td= "Lps. #{book.price}"
+  %td= book.decorate
   %td= book.category
+  %td= book.orders.count
