@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :quality
   validates_numericality_of :quality, greater_than: 0
 
-  around_create :set_total
+  before_create :set_total
 
   def set_total
     self.total = self.book.price * self.quality

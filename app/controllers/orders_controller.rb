@@ -11,9 +11,12 @@ class OrdersController < ApplicationController
 
   def create
     @book = Book.find(params[:book_id])
+    @author = @book.author
     @order = @book.orders.build(order_params)
 
+
     if @order.save
+      UserMailer.order_details(@author,@book,@order).deliver
       redirect_to @book
     else
       render :new
