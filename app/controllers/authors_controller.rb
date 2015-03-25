@@ -12,7 +12,7 @@ class AuthorsController < ApplicationController
     @author = Author.new(authors_params)
 
   if @author.save
-    # UserMailer.welcome_email(@user).deliver
+    UserMailer.welcome_email(@author).deliver
     login(@author)
   else
     render :new
@@ -21,10 +21,7 @@ class AuthorsController < ApplicationController
 
 
   def books
-
-    @books = Book.where("author_id = #{params[:id]}")
-
-
+    @books = Book.where("author_id = #{params[:id]}").order(title: :asc)
   end
 
   private

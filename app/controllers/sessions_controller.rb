@@ -5,9 +5,7 @@ class SessionsController < ApplicationController
   skip_before_filter :authenticate
 
   def new
-    if current_user.present?
-      redirect_to clients_path
-    end
+
   end
 
   def create

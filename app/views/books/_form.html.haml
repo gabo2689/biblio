@@ -4,16 +4,20 @@
   = form_for @book do |f|
     %h2 book
     .form_row
-      = f.label :name, "Nombre"
-      = f.text_field :name
+      = f.label :title, "Nombre"
+      = f.text_field :title
     .form_row
-      = f.label :email
-      = f.email_field :email
+      = f.label :description
+      = f.text_field :description
     .form_row
-      = f.label :password
-      = f.password_field :password
+      = f.label :price
+      = f.number_field :price
     .form_row
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
+      = f.label :category
+    - if(@book.id.present?)
+      = f.text_field :category, :readonly => true
+    - else
+      = f.select :category, Book.book_options
+    end
     #register
-    = f.submit "Sign Up", class: "button"
+    = f.submit "Salvar Libro", class: "button"

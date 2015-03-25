@@ -6,10 +6,12 @@ class Book < ActiveRecord::Base
   validates :description, length: { maximum: 200 }
 
 
-
   def self.book_options
       ["AVENTURA", "ROMANCE","INFANTIL","EDUCATIVO","MOTIVACIONAL"]
     end
+
+
+
 
 
 

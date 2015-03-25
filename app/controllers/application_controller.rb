@@ -14,7 +14,7 @@ end
 
 def login(author)
   session[:author_id] = author.id
-  redirect_to root_path
+  redirect_to books_author_path(session[:author_id])
 end
 
 def authenticate

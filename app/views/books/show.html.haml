@@ -1,0 +1,23 @@
+%h1= @book.title
+%p
+  %strong Name
+  = @book.title
+%p
+  %strong description
+  = @book.description
+
+%p
+  %strong price
+  = @book.price
+
+%p
+  %strong category
+  = @book.category
+
+
+%br
+- if !current_user.nil?
+  = link_to "Edit Book", edit_book_path
+  = link_to "back", books_author_path(current_user.id)
+- else
+  = link_to "back", books_path
