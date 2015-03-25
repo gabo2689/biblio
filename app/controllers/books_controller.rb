@@ -56,7 +56,12 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    @book = Book.find(params[:id])
+
+    @book.destroy
+    redirect_to books_author_path(session[:author_id]), flash: {notice: "Libro Eliminado!"}
   end
+
 
 
   private

@@ -3,4 +3,7 @@
 = render "form"
 
 
+- if @book.orders.count == 0
+  = link_to "Eliminar", book_path(@book), method: :delete
+
 %p= link_to "Cancelar", book_path(@book)
