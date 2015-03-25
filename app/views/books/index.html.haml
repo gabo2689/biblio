@@ -5,6 +5,8 @@
 - if @books.any?
   %table{border: "1"}
     %tr
+      - if current_user.nil?
+        %th Author
       %th Nombre
       %th Descripcion
       %th Precio

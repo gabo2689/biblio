@@ -1,5 +1,7 @@
 %tr
+  - if current_user.nil?
+    %td= book.author.name
   %td= link_to book.title, book
   %td= book.description
-  %td= book.price
+  %td= "Lps. #{book.price}"
   %td= book.category

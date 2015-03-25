@@ -18,6 +18,6 @@
       = f.text_field :category, :readonly => true
     - else
       = f.select :category, Book.book_options
-    end
+    
     #register
-    = f.submit "Salvar Libro", class: "button"
+    = f.submit
