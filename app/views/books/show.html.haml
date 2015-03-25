@@ -36,8 +36,11 @@
           %th Client
           %th Total
           %th Quantity
+          %th Fecha
+
         = f.fields_for :orders do |order|
           %tr
-            %td= order.text_field :client, readonly: true
-            %td= order.number_field :total, readonly: true
+            %td= order.text_field :decorate_client, readonly: true
+            %td= order.text_field :decorate_total, readonly: true
             %td= order.number_field :quality, readonly: true
+            %td= order.text_field :decorate_fecha, readonly: true
