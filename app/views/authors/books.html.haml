@@ -1,0 +1,21 @@
+%h1 Mis Libros
+
+
+- if flash[:notice].present?
+  .notice= flash[:notice]
+
+- if @books.any?
+  %table{border: "1"}
+    %tr
+      %th Nombre
+      %th Descripcion
+      %th Precio
+      %th Categoria
+
+    = render @books
+- else
+  %em No hay ningun libro agregado
+
+%br
+
+= link_to "Nuevo Libro", new_book_path

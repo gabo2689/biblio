@@ -8,6 +8,27 @@
 </head>
 <body>
 
+  <div class="navigation">
+    <table>
+      <tr>
+        <td><%= link_to "HOME", root_path %></td>
+        <% if current_user.present? %>
+        <li><%= current_user.try(:email) %>,<%= link_to "Logout", logout_path, method: :delete %></li>
+        <li><%= link_to "MIS LIBROS", books_author_path(session[:author_id]) %></li>
+
+          <% else %>
+          <li><%= link_to "LOGIN", login_path %></li>
+          <li><%= link_to "SIGN UP", new_author_path %></li>
+          <li><%= link_to "LIBROS", books_path %></li>
+        <% end %>
+
+
+      </tr>
+    </table>
+  </div>
+
+
+
 <%= yield %>
 
 </body>
