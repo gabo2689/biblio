@@ -1,0 +1,16 @@
+= render partial: "shared/print_errors", locals: {obj: @book}
+
+.form
+  = form_for [@book,@order] do |f|
+    %h2 Ordenes
+    .form_row
+      = f.label :client, "Nombre"
+      = f.text_field :client
+    .form_row
+      = f.label :total
+      = f.number_field :total
+    .form_row
+      = f.label :quality
+      = f.number_field :quality
+    #register
+    = f.submit

@@ -5,6 +5,8 @@ class Book < ActiveRecord::Base
   validates_numericality_of :price, greater_than: 0
   validates :description, length: { maximum: 200 }
 
+  accepts_nested_attributes_for :orders
+
 
   def self.book_options
       ["AVENTURA", "ROMANCE","INFANTIL","EDUCATIVO","MOTIVACIONAL"]

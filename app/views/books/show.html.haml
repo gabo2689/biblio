@@ -15,9 +15,29 @@
   = @book.category
 
 
+
+
 %br
 - if !current_user.nil?
-  = link_to "Edit Book", edit_book_path
+  = link_to "Edit Book", edit_book_path(@book)
   = link_to "back", books_author_path(current_user.id)
 - else
   = link_to "back", books_path
+
+%br
+  - if current_user.nil?
+    %h2 Detalle de Ordenes
+
+    = link_to "Crear Order", new_book_order_path(@book)
+
+    = form_for @book do |f|
+      %table{border: "1"}
+        %tr
+          %th Client
+          %th Total
+          %th Quantity
+        = f.fields_for :orders do |order|
+          %tr
+            %td= order.text_field :client, readonly: true
+            %td= order.number_field :total, readonly: true
+            %td= order.number_field :quality, readonly: true
